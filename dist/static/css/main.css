@@ -1,0 +1,94 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+}
+
+
+.flex {
+  display: flex
+}
+
+.flex-col {
+  flex-direction: column
+}
+
+.jc-center {
+  justify-content: center
+}
+.jc-end {
+  justify-content: flex-end
+}
+
+.ai-center {
+  align-items: center
+}
+.ai-stretch {
+  align-items: stretch
+}
+
+.grow-1 {
+  flex-grow: 1
+}
+.grow-3 {
+  flex-grow: 3
+}
+
+.shrink-1 {
+  flex-shrink: 1
+}
+
+.basis-10 {
+  flex-basis: 10px
+}
+
+.h-screen {
+  height: 100vh
+}
+.w-screen {
+  width: 100vw
+}
+
+.w-full {
+  width: 100%
+}
+.min-h-500 {
+  min-height: 500px
+}
+
+.max-h-750 {
+  max-height: 750px
+}
+
+.pr1 {
+  padding-right: 0.25rem;
+}
+
+.px3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.overflow-auto {
+  overflow: auto
+}
+
+.break-keep {
+  word-break: keep-all
+}
+
+.pointer {
+  cursor: pointer
+}
+.hover-1:hover {
+  opacity: 0.75
+}
