@@ -56,7 +56,7 @@
 
 <script>
 import Vue from 'vue';
-import AppendItem from './assets/components/AppendItem.vue';
+import AppendItem from './components/AppendItem';
 
 export default {
   name: 'app',
