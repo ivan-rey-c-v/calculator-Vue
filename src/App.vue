@@ -52,7 +52,7 @@
     </div>
 
     <div class="flex  bgc-blue">
-      <AppendItem val="0" @append="inputNumber"></AppendItem>
+      <AppendItem val="0" @append="addZeros"></AppendItem>
       <AppendItem val="."></AppendItem>
       <AppendItem val="DEL" @append="removeInput"></AppendItem>
       <AppendItem val="=" @append="calculateInputs"
@@ -110,11 +110,11 @@ export default {
       this.isModifying = false;
 
       if( this.isInputting ) {
-        val = this.display[-1] + val;
-        Vue.set(this.display, -1, val);
+        const lastIndex = this.display.length - 1;
+        val = this.display[lastIndex] + val;
+        Vue.set(this.display, lastIndex, val);
       } else {
-        const nextIndex = this.display.length ? this.display.length : 0;
-        Vue.set(this.display, nextIndex, val);
+        this.display.push(val);
         this.isInputting = true;
       }
     },
@@ -125,13 +125,11 @@ export default {
       this.isInputting = false;
 
       if( this.isModifying ) {
-        Vue.set(this.display, -1, modifier);
+        const lastIndex = this.display.length - 1;
+        Vue.set(this.display, lastIndex, modifier);
       } else {
-        if( !this.display.length ) {
-          return undefined;
-        } else {
-          const nextIndex = this.display.length;
-          Vue.set(this.display, nextIndex, modifier);
+        if(this.display.length) {
+          this.display.push(modifier);
           this.isModifying = true;
         }
       }
@@ -151,14 +149,16 @@ export default {
 
 
     plusMinus() {
-      const lastInput = this.display[-1];
+      const lastIndex = this.display.length - 1;
+      const lastInput = this.display[ lastIndex ];
       const isModifier = this.modifierIndex(lastInput) > -1;
-      const result = isModifier ? this.display[-1] : -(this.display[-1]);
-      Vue.set(this.display, -1, result);
+      const result = isModifier ? this.display[lastIndex] : -(this.display[lastIndex]);
+      Vue.set(this.display, lastIndex, result);
     },
 
     removeInput() {
-      const lastInput = this.display[-1];
+      const lastIndex = this.display.length - 1;
+      const lastInput = this.display[lastIndex];
       if(lastInput.length === 1) {
         this.display.pop();
         const modifierIndex = this.modifierIndex(lastInput);
@@ -172,14 +172,18 @@ export default {
         }
 
       } else {
-        lastInput = lastInput.slice(0, -2);
-        Vue.set(this.display, -1, lastInput);
+        const newString = lastInput.slice(0, -1);
+        Vue.set(this.display, lastIndex, newString);
       }
     },
 
     addParenthesis(paren) {
       this.display.push(paren);
-    }
+    },
+
+    addZeros(val) {
+
+    },
 
   }
 }
