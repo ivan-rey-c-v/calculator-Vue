@@ -2,6 +2,10 @@ html {
   box-sizing: border-box;
   font-size: 16px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
+
+  color: rgb(0, 15, 32);
+  font-weight: 600
+
 }
 
 *, *:before, *:after {
@@ -91,4 +95,45 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 }
 .hover-1:hover {
   opacity: 0.75
+}
+
+:root {
+  --color-red: palevioletred;
+  --color-yellow: palegoldenrod;
+  --color-green: palegreen;
+  --color-blue: paleturquoise;
+  --color-darkgreen: #008533;
+  --color-darkred: #8d0119;
+  --color-darkyellow: #cfb001;
+  --color-darkblue: #005c99;
+  --color-darkorange: #ca3b03;
+}
+
+.bgc-red {
+  background-color: var(--color-red)
+}
+.bgc-yellow {
+  background-color: var(--color-yellow)
+}
+.bgc-green {
+  background-color: var(--color-green)
+}
+.bgc-blue {
+  background-color: var(--color-blue)
+}
+
+.darkred {
+  color: var(--color-darkred)
+}
+.darkyellow {
+  color: var(--color-darkyellow)
+}
+.darkgreen {
+  color: var(--color-darkgreen)
+}
+.darkblue {
+  color: var(--color-darkblue)
+}
+.darkorange {
+  color: var(--color-darkorange)
 }

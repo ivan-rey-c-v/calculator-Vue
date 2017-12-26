@@ -2,10 +2,10 @@
   <main id="app"
     class="h-screen w-screen min-h-500 max-h-750 flex flex-col ai-stretch"
   >
-    <section class="flex ai-center px3 overflow-auto">
+    <section class="flex ai-center px3 overflow-auto bgc-green">
       <h2 class="w-full flex jc-end ai-center break-keep">
         <code v-for="(val, index) in display"
-          class="pr1"  :key="index"
+          :class="inputClass(val)"  :key="index"
         >
           {{ numberWithCommas(val) }}
         </code>
@@ -13,41 +13,51 @@
     </section>
 
     <div class="flex">
-      <div class="grow-3 flex">
+      <div class="grow-3 flex bgc-yellow">
         <AppendItem val="("></AppendItem>
         <AppendItem val=")"></AppendItem>
         <AppendItem val="+|-" @append="plusMinus"></AppendItem>
         <AppendItem val="AC" @append="reset"></AppendItem>
       </div>
-      <AppendItem val="+" @append="inputModifier"></AppendItem>
+      <AppendItem val="+" @append="inputModifier"
+        class="bgc-red"
+      ></AppendItem>
     </div>
 
-    <div class="flex">
+    <div class="flex bgc-blue">
       <AppendItem val="7" @append="inputNumber"></AppendItem>
       <AppendItem val="8" @append="inputNumber"></AppendItem>
       <AppendItem val="9" @append="inputNumber"></AppendItem>
-      <AppendItem val="-" @append="inputModifier"></AppendItem>
+      <AppendItem val="-" @append="inputModifier"
+        class="bgc-red"
+      ></AppendItem>
     </div>
 
-    <div class="flex">
+    <div class="flex  bgc-blue">
       <AppendItem val="4" @append="inputNumber"></AppendItem>
       <AppendItem val="5" @append="inputNumber"></AppendItem>
       <AppendItem val="6" @append="inputNumber"></AppendItem>
-      <AppendItem val="/" @append="inputModifier"></AppendItem>
+      <AppendItem val="/" @append="inputModifier"
+        class="bgc-red"
+      ></AppendItem>
     </div>
 
-    <div class="flex">
+    <div class="flex  bgc-blue">
       <AppendItem val="1" @append="inputNumber"></AppendItem>
       <AppendItem val="2" @append="inputNumber"></AppendItem>
       <AppendItem val="3" @append="inputNumber"></AppendItem>
-      <AppendItem val="*" @append="inputModifier"></AppendItem>
+      <AppendItem val="*" @append="inputModifier"
+        class="bgc-red"
+      ></AppendItem>
     </div>
 
-    <div class="flex">
+    <div class="flex  bgc-blue">
       <AppendItem val="0" @append="inputNumber"></AppendItem>
       <AppendItem val="."></AppendItem>
       <AppendItem val="DEL"></AppendItem>
-      <AppendItem val="=" @append="calculateInputs"></AppendItem>
+      <AppendItem val="=" @append="calculateInputs"
+        class="bgc-red"
+      ></AppendItem>
     </div>
 
 
@@ -77,6 +87,19 @@ export default {
     numberWithCommas(x) {
       const isModifier = ['(', ')', '*', '/', '-', '+'].indexOf(x) !== -1;
       return isModifier ? x : x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+
+    inputClass(val) {
+      const index = ['(', ')', '*', '/', '-', '+'].indexOf(val);
+      const inputClass = [
+        ['darkyellow'],
+        ['darkyellow'],
+        ['darkblue', 'pr1'],
+        ['darkorange', 'pr1'],
+        ['darkred', 'pr1'],
+        ['darkgreen', 'pr1']
+      ][index];
+      return index !== -1 ? inputClass : ['pr1'];
     },
 
     inputNumber(val) {
