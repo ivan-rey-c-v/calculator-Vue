@@ -13,14 +13,14 @@
     </section>
 
     <div class="flex">
-      <div class="grow-3 flex bgc-yellow">
+      <div class="grow-3 basis-30 flex bgc-yellow">
         <AppendItem val="(" @append="addParenthesis"></AppendItem>
         <AppendItem val=")" @append="addParenthesis"></AppendItem>
         <AppendItem val="+|-" @append="plusMinus"></AppendItem>
         <AppendItem val="AC" @append="reset"></AppendItem>
       </div>
       <AppendItem val="+" @append="inputModifier"
-        class="bgc-red"
+        class="grow-1 basis-10 bgc-red"
       ></AppendItem>
     </div>
 
@@ -33,7 +33,7 @@
       ></AppendItem>
     </div>
 
-    <div class="flex  bgc-blue">
+    <div class="flex bgc-blue">
       <AppendItem val="4" @append="inputNumber"></AppendItem>
       <AppendItem val="5" @append="inputNumber"></AppendItem>
       <AppendItem val="6" @append="inputNumber"></AppendItem>

@@ -3,7 +3,7 @@ html {
   font-size: 16px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
 
-  color: rgb(0, 15, 32);
+  color: rgb(0, 25, 51);
   font-weight: 600
 
 }
@@ -54,6 +54,9 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 .basis-10 {
   flex-basis: 10px
 }
+.basis-30 {
+  flex-basis: 30px
+}
 
 .h-screen {
   height: 100vh
@@ -102,11 +105,11 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   --color-yellow: palegoldenrod;
   --color-green: palegreen;
   --color-blue: paleturquoise;
-  --color-darkgreen: #008533;
+  --color-darkgreen: #003514;
   --color-darkred: #8d0119;
-  --color-darkyellow: #cfb001;
-  --color-darkblue: #005c99;
-  --color-darkorange: #ca3b03;
+  --color-darkyellow: #6e5c00;
+  --color-darkblue: #003252;
+  --color-darkorange: #8f2600;
 }
 
 .bgc-red {
