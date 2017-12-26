@@ -96,8 +96,8 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 .pointer {
   cursor: pointer
 }
-.hover-1:hover {
-  opacity: 0.75
+.active-1:hover {
+  transform: scale(0.95)
 }
 
 :root {
