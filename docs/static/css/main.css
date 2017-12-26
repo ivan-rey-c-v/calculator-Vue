@@ -2,6 +2,10 @@ html {
   box-sizing: border-box;
   font-size: 16px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
+
+  color: rgb(0, 25, 51);
+  font-weight: 600
+
 }
 
 *, *:before, *:after {
@@ -50,6 +54,9 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 .basis-10 {
   flex-basis: 10px
 }
+.basis-30 {
+  flex-basis: 30px
+}
 
 .h-screen {
   height: 100vh
@@ -89,6 +96,47 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 .pointer {
   cursor: pointer
 }
-.hover-1:hover {
-  opacity: 0.75
+.active-1:hover {
+  transform: scale(0.95)
+}
+
+:root {
+  --color-red: palevioletred;
+  --color-yellow: palegoldenrod;
+  --color-green: palegreen;
+  --color-blue: paleturquoise;
+  --color-darkgreen: #003514;
+  --color-darkred: #8d0119;
+  --color-darkyellow: #6e5c00;
+  --color-darkblue: #003252;
+  --color-darkorange: #8f2600;
+}
+
+.bgc-red {
+  background-color: var(--color-red)
+}
+.bgc-yellow {
+  background-color: var(--color-yellow)
+}
+.bgc-green {
+  background-color: var(--color-green)
+}
+.bgc-blue {
+  background-color: var(--color-blue)
+}
+
+.darkred {
+  color: var(--color-darkred)
+}
+.darkyellow {
+  color: var(--color-darkyellow)
+}
+.darkgreen {
+  color: var(--color-darkgreen)
+}
+.darkblue {
+  color: var(--color-darkblue)
+}
+.darkorange {
+  color: var(--color-darkorange)
 }
