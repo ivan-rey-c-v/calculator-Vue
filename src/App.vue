@@ -14,8 +14,8 @@
 
     <div class="flex">
       <div class="grow-3 flex bgc-yellow">
-        <AppendItem val="("></AppendItem>
-        <AppendItem val=")"></AppendItem>
+        <AppendItem val="(" @append="addParenthesis"></AppendItem>
+        <AppendItem val=")" @append="addParenthesis"></AppendItem>
         <AppendItem val="+|-" @append="plusMinus"></AppendItem>
         <AppendItem val="AC" @append="reset"></AppendItem>
       </div>
@@ -175,7 +175,12 @@ export default {
         lastInput = lastInput.slice(0, -2);
         Vue.set(this.display, -1, lastInput);
       }
+    },
+
+    addParenthesis(paren) {
+      this.display.push(paren);
     }
+
   }
 }
 </script>
