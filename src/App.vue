@@ -54,7 +54,7 @@
     <div class="flex  bgc-blue">
       <AppendItem val="0" @append="inputNumber"></AppendItem>
       <AppendItem val="."></AppendItem>
-      <AppendItem val="DEL"></AppendItem>
+      <AppendItem val="DEL" @append="removeInput"></AppendItem>
       <AppendItem val="=" @append="calculateInputs"
         class="bgc-red"
       ></AppendItem>
@@ -151,11 +151,30 @@ export default {
 
 
     plusMinus() {
-      console.log('...plus||minus', this.display);
       const lastInput = this.display[-1];
       const isModifier = this.modifierIndex(lastInput) > -1;
-      const result = isModifier ? this.display[-1] : -(this.display[lastIndex]);
+      const result = isModifier ? this.display[-1] : -(this.display[-1]);
       Vue.set(this.display, -1, result);
+    },
+
+    removeInput() {
+      const lastInput = this.display[-1];
+      if(lastInput.length === 1) {
+        this.display.pop();
+        const modifierIndex = this.modifierIndex(lastInput);
+
+        if(modifierIndex > -1) {
+          if(modifierIndex >= 2) {
+            this.isModifying = false;
+          }
+        } else {
+          this.isInputting = false;
+        }
+
+      } else {
+        lastInput = lastInput.slice(0, -2);
+        Vue.set(this.display, -1, lastInput);
+      }
     }
   }
 }
