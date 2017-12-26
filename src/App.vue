@@ -84,13 +84,17 @@ export default {
   },
 
   methods: {
+    modifierIndex(val) {
+      return ['(', ')', '*', '/', '-', '+'].indexOf(val);
+    },
+
     numberWithCommas(x) {
-      const isModifier = ['(', ')', '*', '/', '-', '+'].indexOf(x) !== -1;
+      const isModifier = this.modifierIndex(x) > -1;
       return isModifier ? x : x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
 
     inputClass(val) {
-      const index = ['(', ')', '*', '/', '-', '+'].indexOf(val);
+      const index = this.modifierIndex(val);
       const inputClass = [
         ['darkyellow'],
         ['darkyellow'],
@@ -99,16 +103,15 @@ export default {
         ['darkred', 'pr1'],
         ['darkgreen', 'pr1']
       ][index];
-      return index !== -1 ? inputClass : ['pr1'];
+      return index > -1 ? inputClass : ['pr1'];
     },
 
     inputNumber(val) {
       this.isModifying = false;
 
       if( this.isInputting ) {
-        const lastIndex = this.display.length - 1;
-        val = this.display[lastIndex] + val;
-        Vue.set(this.display, lastIndex, val);
+        val = this.display[-1] + val;
+        Vue.set(this.display, -1, val);
       } else {
         const nextIndex = this.display.length ? this.display.length : 0;
         Vue.set(this.display, nextIndex, val);
@@ -122,8 +125,7 @@ export default {
       this.isInputting = false;
 
       if( this.isModifying ) {
-        const lastIndex = this.display.length - 1;
-        Vue.set(this.display, lastIndex, modifier);
+        Vue.set(this.display, -1, modifier);
       } else {
         if( !this.display.length ) {
           return undefined;
@@ -147,17 +149,13 @@ export default {
       this.isInputting = false;
     },
 
-    removeInput() {
-
-    },
 
     plusMinus() {
       console.log('...plus||minus', this.display);
-      const lastIndex = this.display.length - 1;
-      const lastInput = this.display[lastIndex];
-      const isModifier = ['(', ')', '*', '/', '-', '+'].indexOf(lastInput) !== -1;
-      const result = isModifier ? this.display[lastIndex] : -(this.display[lastIndex]);
-      Vue.set(this.display, lastIndex, result);
+      const lastInput = this.display[-1];
+      const isModifier = this.modifierIndex(lastInput) > -1;
+      const result = isModifier ? this.display[-1] : -(this.display[lastIndex]);
+      Vue.set(this.display, -1, result);
     }
   }
 }
