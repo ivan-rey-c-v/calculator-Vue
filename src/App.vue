@@ -2,6 +2,7 @@
   <main id="app"
     class="h-screen w-screen min-h-500 max-h-750 flex flex-col ai-stretch"
   >
+  <!-- TOFIX: Keep section from overflowing -->
     <section class="flex ai-center px3 overflow-auto bgc-green">
       <h2 class="w-full flex jc-end ai-center break-keep overflow-auto">
         <code v-for="(val, index) in display"
@@ -53,7 +54,7 @@
 
     <div class="flex  bgc-blue">
       <AppendItem val="0" @append="inputNumber"></AppendItem>
-      <AppendItem val="."></AppendItem>
+      <AppendItem val="." @append="addDecimal"></AppendItem>
       <AppendItem val="DEL" @append="removeInput"></AppendItem>
       <AppendItem val="=" @append="calculateInputs"
         class="bgc-red"
@@ -90,7 +91,23 @@ export default {
 
     numberWithCommas(x) {
       const isModifier = this.modifierIndex(x) > -1;
-      return isModifier ? x : x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      // x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      if(isModifier) {
+        return x;
+      } else {
+        const array = x.toString().split('.');
+        return array.map(
+          (val, index) => {
+            if(index > 0) {
+              let reversedStr = val.split('').reverse().join('');
+              let withComma = reversedStr.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+              return withComma.split('').reverse().join('');
+            } else {
+              return val.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+          }
+        ).join('.');
+      }
     },
 
     inputClass(val) {
@@ -188,6 +205,13 @@ export default {
       this.display.push(paren);
     },
 
+    addDecimal() {
+      const lastIndex = this.display.length - 1
+      let lastInput = this.display[lastIndex];
+      const hasDecimal = lastInput.includes('.');
+      lastInput = hasDecimal ? lastInput : ( lastInput + '.' );
+      Vue.set(this.display, lastIndex, lastInput);
+    }
 
   }
 }
