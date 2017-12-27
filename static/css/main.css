@@ -96,14 +96,11 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 .pointer {
   cursor: pointer
 }
-.active-1:hover {
-  transform: scale(0.95)
-}
 
 :root {
   --color-red: palevioletred;
   --color-yellow: palegoldenrod;
-  --color-green: palegreen;
+  --color-green: #d7ffd7;
   --color-blue: paleturquoise;
   --color-darkgreen: #003514;
   --color-darkred: #8d0119;
