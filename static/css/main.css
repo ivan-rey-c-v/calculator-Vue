@@ -100,13 +100,13 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 :root {
   --color-red: palevioletred;
   --color-yellow: palegoldenrod;
-  --color-green: #d7ffd7;
+  --color-green: #eaffeaa8;
   --color-blue: paleturquoise;
-  --color-darkgreen: #003514;
-  --color-darkred: #8d0119;
-  --color-darkyellow: #6e5c00;
-  --color-darkblue: #003252;
-  --color-darkorange: #8f2600;
+  --color-darkgreen: #00bb45;
+  --color-darkred: #ff002f;
+  --color-darkyellow: #ffd500;
+  --color-darkblue: #00558a;
+  --color-darkorange: #ff4000;
 }
 
 .bgc-red {
