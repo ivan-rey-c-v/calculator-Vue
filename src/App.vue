@@ -3,7 +3,7 @@
     class="h-screen w-screen min-h-500 max-h-750 flex flex-col ai-stretch"
   >
     <section class="flex ai-center px3 overflow-auto bgc-green">
-      <h2 class="w-full flex jc-end ai-center break-keep">
+      <h2 class="w-full flex jc-end ai-center break-keep overflow-auto">
         <code v-for="(val, index) in display"
           :class="inputClass(val)"  :key="index"
         >
@@ -52,7 +52,7 @@
     </div>
 
     <div class="flex  bgc-blue">
-      <AppendItem val="0" @append="addZeros"></AppendItem>
+      <AppendItem val="0" @append="inputNumber"></AppendItem>
       <AppendItem val="."></AppendItem>
       <AppendItem val="DEL" @append="removeInput"></AppendItem>
       <AppendItem val="=" @append="calculateInputs"
@@ -111,8 +111,15 @@ export default {
 
       if( this.isInputting ) {
         const lastIndex = this.display.length - 1;
-        val = this.display[lastIndex] + val;
-        Vue.set(this.display, lastIndex, val);
+        const lastInput = this.display[lastIndex];
+
+        if(lastInput === '0') {
+          Vue.set(this.display, lastIndex, val)
+        } else {
+          val = this.display[lastIndex] + val;
+          Vue.set(this.display, lastIndex, val);
+        }
+
       } else {
         this.display.push(val);
         this.isInputting = true;
@@ -181,9 +188,6 @@ export default {
       this.display.push(paren);
     },
 
-    addZeros(val) {
-
-    },
 
   }
 }
