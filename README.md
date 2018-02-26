@@ -1,6 +1,9 @@
-# calc_webpack_vuecli
+### Simple Calculator with Vue.js framework.
 
-> A Vue.js project
+Check it here: [My Calculator](https://ivan-rey-c-v.github.io/calculator-Vue/)
+
+
+![Screenshot](screenshot.png)
 
 ## Build Setup
 
