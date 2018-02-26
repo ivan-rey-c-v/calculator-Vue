@@ -3,7 +3,7 @@
 Check it here: [My Calculator](https://ivan-rey-c-v.github.io/calculator-Vue/)
 
 
-![Screenshot](screenshot.png)
+![Screenshot](newscreenshot.png)
 
 ## Build Setup
 
