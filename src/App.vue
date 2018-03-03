@@ -161,7 +161,7 @@ export default {
 
     calculateInputs() {
       const userInput = this.display.join('');
-      const result = new Function('return ' + userInput)();
+      const result = new Function('return ' + userInput)().toString();
       this.display = [result];
     },
 
