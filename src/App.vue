@@ -196,7 +196,7 @@ export default {
         }
 
       } else {
-        const newString = lastInput.slice(0, -1);
+        const newString = lastInput.toString().slice(0, -1);
         Vue.set(this.display, lastIndex, newString);
       }
     },
