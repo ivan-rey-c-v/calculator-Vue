@@ -176,7 +176,7 @@ export default {
       const lastIndex = this.display.length - 1;
       const lastInput = this.display[ lastIndex ];
       const isModifier = this.modifierIndex(lastInput) > -1;
-      const result = isModifier ? this.display[lastIndex] : -(this.display[lastIndex]);
+      const result = isModifier ? this.display[lastIndex] : -this.display[lastIndex].toString();
       Vue.set(this.display, lastIndex, result);
     },
 
